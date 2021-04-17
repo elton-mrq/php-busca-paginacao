@@ -1,0 +1,9 @@
+{
+    "name" : "vendor/php-busca-paginacao",
+    "description": "Aplicação PHP MVC com busca e paginação",
+    "autoload": {
+        "psr-4": {
+            "App\\" : "App"
+        }
+    }
+}
