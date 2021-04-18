@@ -2,6 +2,7 @@
 
 use App\Core;
 use App\Lib\Erro;
+use App\Lib\Conexao;
 
 require_once 'vendor/autoload.php';
 require_once 'Config/config.php';

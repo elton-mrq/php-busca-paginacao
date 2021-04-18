@@ -36,6 +36,7 @@ class Core
         }else{
             throw new Exception("Nosso suporte já esta verificando, desculpe!", 500);
         }
+        
 
         throw new Exception("Página não encontrada!", 404);
 

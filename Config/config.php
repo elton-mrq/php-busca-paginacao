@@ -11,7 +11,7 @@ define('METODO_PADRAO'          , 'index');
 
 //CONSTANTES PARA CONEXAO COM O BD
 define('DB_HOST'                , 'localhost');
-define('DB_NAME'                , '');
+define('DB_NAME'                , 'dbproduto');
 define('DB_USER'                , 'root');
 define('DB_PASS'                , '');
 define('DB_DRIVER'              , 'mysql');
