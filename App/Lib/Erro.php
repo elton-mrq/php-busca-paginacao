@@ -20,9 +20,15 @@ class Erro
         $varMsg = $this->message;
 
         if(file_exists(PATH . '/App/Views/error/' . $this->code . '.php')){
-            require_once  PATH . '/App/Views/error/' . $this->code . '.php';
+            require_once PATH . '/App/Views/layout/header.php';
+            require_once PATH . '/App/Views/layout/menu.php';
+            require_once PATH . '/App/Views/error/' . $this->code . '.php';
+            require_once PATH . '/App/Views/layout/footer.php';
         }else{
+            require_once PATH . '/App/Views/layout/header.php';
+            require_once PATH . '/App/Views/layout/menu.php';
             require_once PATH . '/App/Views/error/500.php';
+            require_once PATH . '/App/Views/layout/footer.php';
         }
     }
 }

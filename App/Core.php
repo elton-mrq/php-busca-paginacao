@@ -9,7 +9,6 @@ class Core
     private $controller;
     private $action;
     private $params = [];
-    private $controllerFile;
 
     public function __construct()
     {
@@ -19,8 +18,8 @@ class Core
     public function run()
     {
         
-        $this->controllerFile   = $this->controller . '.php';
-        if(!file_exists(NAMESPACE_CONTROLLERS . $this->controllerFile)){
+        $controllerFile   = $this->controller . '.php';
+        if(!file_exists(NAMESPACE_CONTROLLERS . $controllerFile)){
             throw new Exception("Página não encontrada!", 404);
         }
 
@@ -65,7 +64,7 @@ class Core
 
     public function verificaArray($array, $key)
     {
-        if(!empty($array[$key]) && isset($array[$key])){
+        if(isset($array[$key]) && !empty($array[$key])){
             return $array[$key];
         }
         return null;
@@ -78,24 +77,9 @@ class Core
     }
 
    
-    public function setController($controller)
-    {
-        $this->controller = $controller;
-
-        return $this;
-    }
-
-   
     public function getAction()
     {
         return $this->action;
     }
 
-    
-    public function setAction($action)
-    {
-        $this->action = $action;
-
-        return $this;
-    }
 }
