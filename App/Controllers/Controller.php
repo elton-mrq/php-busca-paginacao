@@ -6,20 +6,13 @@ use App\Lib\Sessao;
 
 abstract class Controller
 {
-    private $core;
+    protected $core;
     private $viewVar;
 
     public function __construct($core)
     {
         $this->setViewParam('nameController', $core->getController());
         $this->setViewParam('nameAction', $core->getAction());
-    }
-
-    public function setViewParam($varName, $varValue)
-    {
-        if($varName != "" && $varValue != ""){
-            $this->viewVar[$varName] = $varValue;
-        }
     }
 
     public function render($view)
@@ -42,5 +35,12 @@ abstract class Controller
     public function getViewVar()
     {
         return $this->viewVar;
+    }
+    
+    public function setViewParam($varName, $varValue)
+    {
+        if ($varName != "" && $varValue != "") {
+            $this->viewVar[$varName] = $varValue;
+        }
     }
 }

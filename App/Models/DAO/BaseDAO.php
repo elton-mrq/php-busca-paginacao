@@ -36,7 +36,7 @@ abstract class BaseDAO
         $limit = (isset($limit)) ? " LIMIT {$limit}" : "";
         
         $query = "SELECT {$fields} FROM {$this->table} {$where} {$order} {$limit}";
-        
+        //echo '<br><br>' . $query;
         return $this->execute($query);
 
     }

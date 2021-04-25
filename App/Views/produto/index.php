@@ -44,13 +44,14 @@
                                     <th class="info hidden-sm hidden-xs">EAN</th>
                                     <th class="info hidden-sm hidden-xs">Status</th>
                                     <th class="info hidden-sm hidden-xs">Data Cadastro</th>
+                                    <th class="info hiddes-sm hidden-xs"></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach($viewVar['listaProdutos'] as $produto) { ?>
                                 <tr class="<?php echo ($produto->getStatus = "N") ? "linhaDesativado" : ""; ?>">
                                     <td><?php echo $produto->getNome(); ?></td>
-                                    <td class="hidden-sm hidden-xs">R$ <?php // echo App\Lib\ConversorMonetario::dolarParaReal($produto->getPreco()); ?></td>
+                                    <td class="hidden-sm hidden-xs">R$ <?php echo $produto->getPreco(); ?></td>
                                     <td class="hidden-sm hidden-xs"><?php echo $produto->getEan(); ?></td>
                                     <td class="hidden-sm hidden-xs"><?php echo $produto->getStatus(); ?></td>
                                     <td class="hidden-sm hidden-xs"><?php echo $produto->getDataCadastro()->format('d/m/Y'); ?></td>
@@ -63,7 +64,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <?php // echo $viewVar['paginacao'] ?>
+                    <?php echo $viewVar['paginacao'] ?>
                     <?php } ?>
         </div>
     </div>
