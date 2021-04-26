@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Lib\Sessao;
+use App\lib\ConversorMonetario;
 
 abstract class Controller
 {
@@ -19,6 +20,7 @@ abstract class Controller
     {
         $viewVar = $this->getViewVar();
         $Sessao = Sessao::class;
+        $ConversorMonetario = ConversorMonetario::class;
 
         require_once PATH . '/App/Views/layout/header.php';
         require_once PATH . '/App/Views/layout/menu.php';

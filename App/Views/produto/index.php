@@ -51,7 +51,7 @@
                                 <?php foreach($viewVar['listaProdutos'] as $produto) { ?>
                                 <tr class="<?php echo ($produto->getStatus = "N") ? "linhaDesativado" : ""; ?>">
                                     <td><?php echo $produto->getNome(); ?></td>
-                                    <td class="hidden-sm hidden-xs">R$ <?php echo $produto->getPreco(); ?></td>
+                                    <td class="hidden-sm hidden-xs">R$ <?php echo $ConversorMonetario::dolarParaReal($produto->getPreco()); ?></td>
                                     <td class="hidden-sm hidden-xs"><?php echo $produto->getEan(); ?></td>
                                     <td class="hidden-sm hidden-xs"><?php echo $produto->getStatus(); ?></td>
                                     <td class="hidden-sm hidden-xs"><?php echo $produto->getDataCadastro()->format('d/m/Y'); ?></td>
