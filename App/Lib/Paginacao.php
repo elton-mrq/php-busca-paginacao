@@ -46,7 +46,6 @@ class Paginacao
     {
         $queryString  = (!empty($paginaSelecionada)) ? '?paginaSelecionada=' . $paginaSelecionada : '';
         $queryString .= (!empty($buscaProduto)) ? '&buscaProduto=' . $buscaProduto : '';
-
         return $queryString;
     }
 }

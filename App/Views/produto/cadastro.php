@@ -55,8 +55,8 @@
 
                 <div class="form-group">
                     <label for="descricao">Descrição:</label>
-                    <textarea name="descricao" cols="30" rows="5" class="form-control" placeholder="Descrição do Produto">
-                    <?php echo $Sessao::retornaValorFormulario('descricao'); ?></textarea>
+                    <textarea class="form-control" name="descricao" placeholder="Descrição do produto"
+                      required><?php echo $Sessao::retornaValorFormulario('descricao'); ?></textarea>
                 </div>
                 <button type="submit" class="btn btn-success btn-sm">
                     <span class="glyphicon glyphicon-floppy-disk" aria-hidden="true"></span> Salvar</button>

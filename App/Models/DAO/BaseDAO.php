@@ -36,7 +36,7 @@ abstract class BaseDAO
         $limit = (isset($limit)) ? " LIMIT {$limit}" : "";
         
         $query = "SELECT {$fields} FROM {$this->table} {$where} {$order} {$limit}";
-        //echo '<br><br>' . $query;
+        
         return $this->execute($query);
 
     }
@@ -61,12 +61,12 @@ abstract class BaseDAO
         if(!empty($where) && !empty($values)){
             $fields = array_keys($values);
 
-            $query = "UPDATE {$this->table} SET " . implode(' = ? ', $fields) . " = ? WHERE {$where}";
+            $query = "UPDATE {$this->table} SET " . implode(' = ?, ', $fields) . " = ? WHERE {$where}";
             $stmt = $this->execute($query, array_values($values));
-
+            //echo $query; exit;
             return $stmt->rowCount();
         }else {
-            return false;
+            return false;   
         }
     }
 

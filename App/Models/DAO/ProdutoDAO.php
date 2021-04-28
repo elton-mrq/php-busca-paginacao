@@ -41,7 +41,7 @@ class ProdutoDAO extends BaseDAO
     public function validaEan($ean)
     {
         if($ean){
-            $resultado = $this->select("ean = '{$ean}'", '', '', 'count(*) as total');
+            $resultado = $this->select("ean = '{$ean}'", null, null, 'count(*) as total');
             return $resultado->fetch()['total'];
         }else{
             return false;
@@ -52,7 +52,7 @@ class ProdutoDAO extends BaseDAO
 
     public function listar($id = null)
     {
-        if(!$id){
+        if($id){
             $resultado = $this->select(" id = {$id}");
 
             return $resultado->fetchObject(Produto::class);
@@ -114,7 +114,7 @@ class ProdutoDAO extends BaseDAO
             );
 
         } catch (Exception $exc) {
-            throw new Exception("Erro na gravação de dados.", 500);
+            throw new Exception($exc->getMessage(), 500);
         }
     }
 

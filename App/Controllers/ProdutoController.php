@@ -25,7 +25,7 @@ class ProdutoController extends Controller
 
             $this->setViewParam('buscaProduto', $_GET['buscaProduto']);
             $this->setViewParam('paginacao', $paginacao->criandoLink($_GET['buscaProduto']));
-            $this->setViewParam('queryString', Paginacao::criandoQuerystring($_GET['paginacao'], $_GET['buscaProduto']));
+            $this->setViewParam('queryString', Paginacao::criandoQuerystring($_GET['paginaSelecionada'], $_GET['buscaProduto']));
             
             $this->setViewParam('listaProdutos', $listaProduto['resultado']);
     }
@@ -56,7 +56,7 @@ class ProdutoController extends Controller
             $produto->setPreco(ConversorMonetario::realParaDolar($_POST['preco']));
             $produto->setUnidade($_POST['unidade']);
             $produto->setEan($_POST['ean']);
-            $produto->setDataCadastro($_POST['descricao']);
+            $produto->setDescricao($_POST['descricao']);
 
             Sessao::gravaFormulario($_POST);
 
@@ -80,11 +80,8 @@ class ProdutoController extends Controller
 
             $this->redirect('/produto');
 
-        } else {
-            Sessao::gravaErro(['Não tem POST']);
-            $this->redirect('/produto/cadastro');
-        }          
-        
+        } 
+
         Sessao::limpaErro();
         Sessao::limpaFormulario();
         Sessao::limpaMensagem();
@@ -95,8 +92,8 @@ class ProdutoController extends Controller
     {
         if($params){
 
-            $id = $params[0];
-
+            $id = $params;
+            
             $produtoDAO = new ProdutoDAO();
 
             $produto = $produtoDAO->listar($id);
@@ -105,10 +102,10 @@ class ProdutoController extends Controller
                 Sessao::gravaMensagem('Produto Inexistente!');
                 $this->redirect('/produto');
             }
-
+ 
             $this->setViewParam('produto', $produto);
             $this->setViewParam('queryString', Paginacao::criandoQuerystring($_GET['paginaSelecionada'], $_GET['buscaProduto']));
-
+           
             $this->render('/produto/editar');
 
             Sessao::limpaErro();
@@ -121,8 +118,6 @@ class ProdutoController extends Controller
 
     public function atualizar()
     {
-        if($_SERVER['REQUEST_METHOD'] == 'POST'){
-
             $produto = new Produto();
             $produto->setId($_POST['id']);
             $produto->setNome($_POST['nome']);
@@ -159,9 +154,7 @@ class ProdutoController extends Controller
             Sessao::limpaMensagem();
             Sessao::limpaFormulario();
 
-        } else {
-            throw new \Exception('Erro na aplicação.', 404);
-        }
+            $this->redirect('/produto/?paginaSelecionada='.$_GET['paginaSelecionada'].'&buscaProduto='.$_GET['buscaProduto']);
     }
 
 }

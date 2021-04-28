@@ -56,8 +56,8 @@
                                     <td class="hidden-sm hidden-xs"><?php echo $produto->getStatus(); ?></td>
                                     <td class="hidden-sm hidden-xs"><?php echo $produto->getDataCadastro()->format('d/m/Y'); ?></td>
                                     <td>
-                                        <a href="http://<?php echo APP_HOST; ?>/produto/edicao/<?php echo $produto->getId(); ?><?php echo $viewVar['queryString']; ?>" class="btn btn-info btn-sm" <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar </a>
-                                        <a href="http://<?php echo APP_HOST; ?>/produto/exclusao/<?php echo $produto->getId(); ?><?php echo $viewVar['queryString']; ?>" class="btn btn-danger btn-sm" <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Editar </a>
+                                    <a href="http://<?php echo APP_HOST; ?>/produto/edicao/<?php echo $produto->getId(); ?><?php echo $viewVar['queryString']; ?>" class="btn btn-info btn-sm"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span> Editar </a>
+                                        <a href="http://<?php echo APP_HOST; ?>/produto/exclusao/<?php echo $produto->getId(); ?><?php echo $viewVar['queryString']; ?>" class="btn btn-danger btn-sm"> <span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Excluir </a>
                                     </td>
                                 </tr>
                                 <?php } ?>
