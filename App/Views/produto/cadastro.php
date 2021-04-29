@@ -16,19 +16,19 @@
                 <div class="form-group">
                     <label for="nome">Nome:</label>
                     <input type="text" class="form-control" name="nome" placeholder="Nome do Produto"
-                    value="<?php echo $Sessao::retornaValorFormulario('nome'); ?>" >
+                    value="<?php echo $Sessao::retornaValorFormulario('nome'); ?>" required >
                 </div>
 
                 
                 <div class="form-group">
                     <label for="preco">Preço:</label>
                     <input type="text" class="form-control money" maxlength="11" name="preco" placeholder="100"
-                    value="<?php echo $Sessao::retornaValorFormulario('preco'); ?>" >
+                    value="<?php echo $Sessao::retornaValorFormulario('preco'); ?>" required>
                 </div>
 
                 <div class="form-group">
                     <label for="unidade">Unidade:</label>
-                    <select name="unidade" class="form-control">
+                    <select name="unidade" class="form-control" required>
                     <option value="Caixa" <?php echo ($Sessao::retornaValorFormulario('Caixa') == "Caixa") ?
                         "select" : "" ?>>Caixa</option>
                     <option value="Pacote"  <?php echo ($Sessao::retornaValorFormulario('Pacote') == "Pacote") ?
@@ -41,7 +41,7 @@
                 <div class="form-group">
                     <label for="ean">EAN</label>
                     <input type="text" class="form-control" name="ean" placeholder="0"
-                    value="<?php echo $Sessao::retornaValorFormulario('ean'); ?>" maxlength="13">
+                    value="<?php echo $Sessao::retornaValorFormulario('ean'); ?>" maxlength="13" required>
                 </div>
 
                 <div class="form-group">

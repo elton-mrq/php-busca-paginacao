@@ -90,30 +90,26 @@ class ProdutoController extends Controller
 
     public function edicao($params)
     {
-        if($params){
+     
+        $id = $params;
+        
+        $produtoDAO = new ProdutoDAO();
 
-            $id = $params;
-            
-            $produtoDAO = new ProdutoDAO();
+        $produto = $produtoDAO->listar($id);
 
-            $produto = $produtoDAO->listar($id);
-
-            if(!$produto){
-                Sessao::gravaMensagem('Produto Inexistente!');
-                $this->redirect('/produto');
-            }
- 
-            $this->setViewParam('produto', $produto);
-            $this->setViewParam('queryString', Paginacao::criandoQuerystring($_GET['paginaSelecionada'], $_GET['buscaProduto']));
-           
-            $this->render('/produto/editar');
-
-            Sessao::limpaErro();
-            Sessao::limpaMensagem();
-
-        }else{
-            throw new \Exception("Erro na aplicação", 404);
+        if(!$produto){
+            Sessao::gravaMensagem('Produto Inexistente!');
+            $this->redirect('/produto');
         }
+
+        $this->setViewParam('produto', $produto);
+        $this->setViewParam('queryString', Paginacao::criandoQuerystring($_GET['paginaSelecionada'], $_GET['buscaProduto']));
+        
+        $this->render('/produto/editar');
+
+        Sessao::limpaErro();
+        Sessao::limpaMensagem();     
+
     }
 
     public function atualizar()
@@ -155,6 +151,47 @@ class ProdutoController extends Controller
             Sessao::limpaFormulario();
 
             $this->redirect('/produto/?paginaSelecionada='.$_GET['paginaSelecionada'].'&buscaProduto='.$_GET['buscaProduto']);
+    }
+
+    public function exclusao($params)
+    {
+        $id = $params;
+
+        $produtoDAO = new ProdutoDAO();
+
+        $produto = $produtoDAO->listar($id);
+
+        if(!$produto){
+            Sessao::gravaMensagem("Produto Inexistente!");
+            $this->redirect('/produto');
+        }
+
+        $this->setViewParam('produto', $produto);
+        $this->setViewParam('queryString', Paginacao::criandoQuerystring($_GET['paginaSelecionada'], $_GET['buscaProduto']));
+
+        $this->render('/produto/exclusao');
+
+        Sessao::limpaErro();
+        Sessao::limpaMensagem();
+
+    }
+
+    public function excluir()
+    {
+        $produto = new Produto();
+        $produto->setId($_POST['id']);
+
+        $produtoDAO = new ProdutoDAO();
+
+        if(!$produtoDAO->excluir($produto)){
+            Sessao::gravaMensagem("Produto Inexistente!");
+            $this->redirect('/produto');
+        }
+
+        Sessao::gravaMensagem("Produto excluído com sucesso!");
+
+        $this->redirect('/produto/');
+
     }
 
 }

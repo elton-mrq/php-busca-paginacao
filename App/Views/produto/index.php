@@ -65,7 +65,7 @@
                         </table>
                     </div>
                     <?php echo $viewVar['paginacao'] ?>
-                    <?php } ?>
+                <?php } ?>
         </div>
     </div>
 </div>
